@@ -1,0 +1,111 @@
+						#Requirments:
+
+R1:System Provides Secure Login feature for Authenticated users.
+
+	R1.1:System Provides eRegistration  form  for Money Lenders who are intrested to use our MoneyLending
+	 Managment System as website(platform). 
+		
+		R1.1.1:Registration form contain field to take genaral information of user like fullname,
+			address,city,contact number,email_id etc.
+ 			
+		R1.1.2:Registration form also contain custom username and password field which is validated 
+			after authentication of valid user.
+	
+	R1.2:System enable user to login after verification of register imformation by admin with user.
+
+	R1.3:System Authenticate user by username and password(seprately taken in e-registration form)
+		after cross verification by admin.
+
+R2:System manages users
+	
+	R2.1:System store record of each authenticated user based on registered information.
+	
+	R2.2:System provide seprate (database)connection to each user. 
+
+R3:System  Functions
+	
+	R3.1:System Provide feature to Add New Account on basis of items taken as  mortgage and manages each
+		customers account.
+
+	R3.2:System provide feature to search old customer information which show account transections 
+		and customer record.   
+			
+R4:System  Add New Account on basis of items taken as  mortgage with its customer information and manage 
+	customer details.
+
+	R4.1:System provide Customer form to add customer information.
+		
+		R4.1.1:Customer form field include customer's fullname,address,city,mobile number,email id,
+			aadhar number etc to unique identification of customer.
+		
+		R4.1.2:System is avilable only for people of specific city and nearer villages.
+	
+	R4.2:System provide reset facility to reset all added customer details.
+	
+	R4.3:System Add information of customer in database.
+
+R5:System Provide interface to add mortgage items from customer to customer added account.
+
+	R5.1:System can accept only gold,silver or platinum metal jwellary to taken as mortgage.
+
+		R5.1.1:System provide selction category for gold or silver or platinium for crossponding ornaments.
+
+		R5.1.2:System Display diffrent jwellary items(ornaments) based on selection category(gold or silver 
+			or platinium).		
+	
+	R5.2:System enables user to add multiple items of mortgage to customer account.
+
+	R5.3 System enable user to remove multiple items if they are previously added items. 
+
+	R5.4:System provide final weight field to enter final weight of mortgage items of customer.
+
+	R5.5:System Provide final amount field that indicte money given to customer per mortgage items.
+
+R6:System manages items of customer taken as mortgage.
+
+	R6.1:System genrate unique 4 digit refrance number for mortgage items of customer account.
+
+		R6.1.1:System link refrence number to mortgage items of customer.
+
+	R6.2:System Provide user to add refrance place which describe physical location of mortgage items.
+	
+	R6.3:System attach date to mortgage items. 
+
+	R6.3:System Store all detail of mortgage items to perticular customer.
+
+R7:System verify customer details to its mortgage items.
+
+	R7.1:System review customer details with list of items taken as mortgage from added mortgage items.
+
+	R7.2:System provide revert back if detail not match as per customer.
+
+	R7.3:System (store)save customer detail with its mortgage items details if details are validate. 
+
+
+R8:System search old account trasection.
+
+	R8.1:System enable user to search customer by name,refrence number,city,mobile number etc..
+
+	R8.2:System display search result
+
+		R8.2.1:search result record formate contain name ,city and refrence number.
+
+		R8.2.2:record of search includes date-wise customer account transection information .
+
+			R8.2.2.1:System enable user to print account  transection report of record.
+	
+R9:System manages trasection of customer account.
+  
+	R9.1:System contain custom intrest rate  field for user.
+		
+		R9.1.1:System calculate simple intrest rate on mortgage items of customer if trasection time 
+			is below 1 year.
+		R9.1.2:System calculate compound intrest rate on mortgage items of customer if trasection time 
+			is above 1 year.
+
+					
+	R9.2:System display time elapsed for customer mortgage item in record section.
+
+	R9.3:System provide return money field to user for money paid by customer with interst rate.
+
+	R9.4:System enable user to close account of customer if money is paid by customer.

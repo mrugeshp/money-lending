@@ -1,0 +1,13 @@
+J:\project_work\MLMS0.1\MLMS0.1\bin\MLMS0.1.dll.config
+J:\project_work\MLMS0.1\MLMS0.1\bin\MLMS0.1.dll
+J:\project_work\MLMS0.1\MLMS0.1\bin\MLMS0.1.pdb
+J:\project_work\MLMS0.1\MLMS0.1\bin\EntityFramework.dll
+J:\project_work\MLMS0.1\MLMS0.1\bin\EntityFramework.SqlServer.dll
+J:\project_work\MLMS0.1\MLMS0.1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+J:\project_work\MLMS0.1\MLMS0.1\bin\EntityFramework.xml
+J:\project_work\MLMS0.1\MLMS0.1\bin\EntityFramework.SqlServer.xml
+J:\project_work\MLMS0.1\MLMS0.1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+J:\project_work\MLMS0.1\MLMS0.1\obj\Debug\MLMS0.1.csprojResolveAssemblyReference.cache
+J:\project_work\MLMS0.1\MLMS0.1\obj\Debug\MLMS0.1.csproj.CoreCompileInputs.cache
+J:\project_work\MLMS0.1\MLMS0.1\obj\Debug\MLMS0.1.dll
+J:\project_work\MLMS0.1\MLMS0.1\obj\Debug\MLMS0.1.pdb

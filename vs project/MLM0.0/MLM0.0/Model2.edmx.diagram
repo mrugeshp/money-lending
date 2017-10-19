@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17e71359037d4a59a0fba4b533c7a35b" Name="Diagram1">
+        <EntityTypeShape EntityType="mlms_DBModel.account" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.customer" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.log_user" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.mor_item" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.mor_type" Width="1.5" PointX="3.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.reference" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.reg_user" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.transection" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.acc_item_type" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.cash" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mlms_DBModel.cheque" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="mlms_DBModel.FK_acc_item_type_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.FK_acc_item_type_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.FK_acc_item_type_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.FK_cash_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.FK_cheque_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.acc_cust" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.acc_ref" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.acc_trans" ManuallyRouted="false" />
+        <AssociationConnector Association="mlms_DBModel.mor_item_type" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

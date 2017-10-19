@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="authuserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cust_mor">
+          <Key>
+            <PropertyRef Name="cust_mor_id" />
+          </Key>
+          <Property Name="cust_mor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="item_type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="item_name" Type="varchar" MaxLength="30" />
+          <Property Name="gross_weight" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="rate" Type="numeric" Precision="9" Scale="2" />
+          <Property Name="amount" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_fname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="c_mname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="c_lname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="email_id" Type="varchar" MaxLength="30" />
+          <Property Name="mobile_no" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="cphoto_path" Type="varchar" MaxLength="100" />
+          <Property Name="mphoto_path" Type="varchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="created_date" Type="datetime" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="interest_rate" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="credit_limit" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="log_user">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reg_user">
+          <Key>
+            <PropertyRef Name="reg_id" />
+          </Key>
+          <Property Name="reg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reg_uname" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="reg_pass" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="reg_cpass" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="email_id" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="mobile_no" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="reg_date" Type="datetime" />
+          <Property Name="role_id" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="isvalid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transection">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="t_type" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="t_date" Type="datetime" Nullable="false" />
+          <Property Name="t_amount" Type="numeric" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="t_remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_cust_mor_ToTable">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="cust_mor" Type="Self.cust_mor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="cust_mor">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transection_ToTable">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="transection" Type="Self.transection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="transection">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="authuserModelStoreContainer">
+          <EntitySet Name="cust_mor" EntityType="Self.cust_mor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log_user" EntityType="Self.log_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reg_user" EntityType="Self.reg_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transection" EntityType="Self.transection" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_cust_mor_ToTable" Association="Self.FK_cust_mor_ToTable">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="cust_mor" EntitySet="cust_mor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transection_ToTable" Association="Self.FK_transection_ToTable">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="transection" EntitySet="transection" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="authuserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cust_mor">
+          <Key>
+            <PropertyRef Name="cust_mor_id" />
+          </Key>
+          <Property Name="cust_mor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="item_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="item_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="gross_weight" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="rate" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="amount" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_cust_mor_ToTable" FromRole="cust_mor" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_mname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="c_lname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mobile_no" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="cphoto_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mphoto_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="interest_rate" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="credit_limit" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <NavigationProperty Name="cust_mor" Relationship="Self.FK_cust_mor_ToTable" FromRole="customer" ToRole="cust_mor" />
+          <NavigationProperty Name="transections" Relationship="Self.FK_transection_ToTable" FromRole="customer" ToRole="transection" />
+        </EntityType>
+        <EntityType Name="log_user">
+          <Key>
+            <PropertyRef Name="log_id" />
+          </Key>
+          <Property Name="log_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reg_user">
+          <Key>
+            <PropertyRef Name="reg_id" />
+          </Key>
+          <Property Name="reg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reg_uname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reg_pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reg_cpass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mobile_no" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="reg_date" Type="DateTime" Precision="3" />
+          <Property Name="role_id" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="isvalid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transection">
+          <Key>
+            <PropertyRef Name="t_id" />
+          </Key>
+          <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="t_type" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="t_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="t_amount" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="t_remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer" Relationship="Self.FK_transection_ToTable" FromRole="transection" ToRole="customer" />
+        </EntityType>
+        <Association Name="FK_cust_mor_ToTable">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="cust_mor" Type="Self.cust_mor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="cust_mor">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transection_ToTable">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="transection" Type="Self.transection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="c_id" />
+            </Principal>
+            <Dependent Role="transection">
+              <PropertyRef Name="c_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="authuserDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cust_mor" EntityType="Self.cust_mor" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="log_user" EntityType="Self.log_user" />
+          <EntitySet Name="reg_user" EntityType="Self.reg_user" />
+          <EntitySet Name="transections" EntityType="Self.transection" />
+          <AssociationSet Name="FK_cust_mor_ToTable" Association="Self.FK_cust_mor_ToTable">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="cust_mor" EntitySet="cust_mor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transection_ToTable" Association="Self.FK_transection_ToTable">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="transection" EntitySet="transections" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="authuserModelStoreContainer" CdmEntityContainer="authuserDbContext">
+          <EntitySetMapping Name="cust_mor">
+            <EntityTypeMapping TypeName="authuserModel.cust_mor">
+              <MappingFragment StoreEntitySet="cust_mor">
+                <ScalarProperty Name="cust_mor_id" ColumnName="cust_mor_id" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="item_type" ColumnName="item_type" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="gross_weight" ColumnName="gross_weight" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="authuserModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_fname" ColumnName="c_fname" />
+                <ScalarProperty Name="c_mname" ColumnName="c_mname" />
+                <ScalarProperty Name="c_lname" ColumnName="c_lname" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="cphoto_path" ColumnName="cphoto_path" />
+                <ScalarProperty Name="mphoto_path" ColumnName="mphoto_path" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="interest_rate" ColumnName="interest_rate" />
+                <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log_user">
+            <EntityTypeMapping TypeName="authuserModel.log_user">
+              <MappingFragment StoreEntitySet="log_user">
+                <ScalarProperty Name="log_id" ColumnName="log_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reg_user">
+            <EntityTypeMapping TypeName="authuserModel.reg_user">
+              <MappingFragment StoreEntitySet="reg_user">
+                <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+                <ScalarProperty Name="reg_uname" ColumnName="reg_uname" />
+                <ScalarProperty Name="reg_pass" ColumnName="reg_pass" />
+                <ScalarProperty Name="reg_cpass" ColumnName="reg_cpass" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="isvalid" ColumnName="isvalid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transections">
+            <EntityTypeMapping TypeName="authuserModel.transection">
+              <MappingFragment StoreEntitySet="transection">
+                <ScalarProperty Name="t_id" ColumnName="t_id" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="t_type" ColumnName="t_type" />
+                <ScalarProperty Name="t_date" ColumnName="t_date" />
+                <ScalarProperty Name="t_amount" ColumnName="t_amount" />
+                <ScalarProperty Name="t_remark" ColumnName="t_remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

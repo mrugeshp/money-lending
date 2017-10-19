@@ -1,0 +1,13 @@
+J:\project_work\module2\module2\bin\module2.dll.config
+J:\project_work\module2\module2\bin\module2.dll
+J:\project_work\module2\module2\bin\module2.pdb
+J:\project_work\module2\module2\bin\EntityFramework.dll
+J:\project_work\module2\module2\bin\EntityFramework.SqlServer.dll
+J:\project_work\module2\module2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+J:\project_work\module2\module2\bin\EntityFramework.xml
+J:\project_work\module2\module2\bin\EntityFramework.SqlServer.xml
+J:\project_work\module2\module2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+J:\project_work\module2\module2\obj\Debug\module2.csprojResolveAssemblyReference.cache
+J:\project_work\module2\module2\obj\Debug\module2.csproj.CoreCompileInputs.cache
+J:\project_work\module2\module2\obj\Debug\module2.dll
+J:\project_work\module2\module2\obj\Debug\module2.pdb

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="authuserModelStoreContainer" CdmEntityContainer="authuserDbContext">
+    <EntitySetMapping Name="cust_mor">
+      <EntityTypeMapping TypeName="authuserModel.cust_mor">
+        <MappingFragment StoreEntitySet="cust_mor">
+          <ScalarProperty Name="cust_mor_id" ColumnName="cust_mor_id" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="item_type" ColumnName="item_type" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="gross_weight" ColumnName="gross_weight" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="authuserModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="c_fname" ColumnName="c_fname" />
+          <ScalarProperty Name="c_mname" ColumnName="c_mname" />
+          <ScalarProperty Name="c_lname" ColumnName="c_lname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="cphoto_path" ColumnName="cphoto_path" />
+          <ScalarProperty Name="mphoto_path" ColumnName="mphoto_path" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="interest_rate" ColumnName="interest_rate" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_user">
+      <EntityTypeMapping TypeName="authuserModel.log_user">
+        <MappingFragment StoreEntitySet="log_user">
+          <ScalarProperty Name="log_id" ColumnName="log_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reg_user">
+      <EntityTypeMapping TypeName="authuserModel.reg_user">
+        <MappingFragment StoreEntitySet="reg_user">
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+          <ScalarProperty Name="reg_uname" ColumnName="reg_uname" />
+          <ScalarProperty Name="reg_pass" ColumnName="reg_pass" />
+          <ScalarProperty Name="reg_cpass" ColumnName="reg_cpass" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="isvalid" ColumnName="isvalid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transections">
+      <EntityTypeMapping TypeName="authuserModel.transection">
+        <MappingFragment StoreEntitySet="transection">
+          <ScalarProperty Name="t_id" ColumnName="t_id" />
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="t_type" ColumnName="t_type" />
+          <ScalarProperty Name="t_date" ColumnName="t_date" />
+          <ScalarProperty Name="t_amount" ColumnName="t_amount" />
+          <ScalarProperty Name="t_remark" ColumnName="t_remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

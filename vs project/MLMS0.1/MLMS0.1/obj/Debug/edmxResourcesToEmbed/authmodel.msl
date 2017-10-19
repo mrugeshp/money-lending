@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="authuserModelStoreContainer" CdmEntityContainer="authuserEntities">
+    <EntitySetMapping Name="log_user">
+      <EntityTypeMapping TypeName="authuserModel.log_user">
+        <MappingFragment StoreEntitySet="log_user">
+          <ScalarProperty Name="log_id" ColumnName="log_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reg_user">
+      <EntityTypeMapping TypeName="authuserModel.reg_user">
+        <MappingFragment StoreEntitySet="reg_user">
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+          <ScalarProperty Name="reg_uname" ColumnName="reg_uname" />
+          <ScalarProperty Name="reg_pass" ColumnName="reg_pass" />
+          <ScalarProperty Name="reg_cpass" ColumnName="reg_cpass" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

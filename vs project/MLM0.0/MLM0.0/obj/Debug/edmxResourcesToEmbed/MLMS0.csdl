@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mlms_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="acc_id" />
+    </Key>
+    <Property Name="acc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="acc_no" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="acc_bal" Type="Int32" Nullable="false" />
+    <Property Name="acc_date" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="acc_item_type" Relationship="Self.FK_acc_item_type_ToTable" FromRole="account" ToRole="acc_item_type" />
+    <NavigationProperty Name="customers" Relationship="Self.acc_cust" FromRole="account" ToRole="customer" />
+    <NavigationProperty Name="references" Relationship="Self.acc_ref" FromRole="account" ToRole="reference" />
+    <NavigationProperty Name="transections" Relationship="Self.acc_trans" FromRole="account" ToRole="transection" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="c_fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_mname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="c_lname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="age" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="mobile_no" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pin_no" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="email_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="accounts" Relationship="Self.acc_cust" FromRole="customer" ToRole="account" />
+  </EntityType>
+  <EntityType Name="log_user">
+    <Key>
+      <PropertyRef Name="log_id" />
+    </Key>
+    <Property Name="log_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mor_item">
+    <Key>
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="acc_item_type" Relationship="Self.FK_acc_item_type_ToTable_1" FromRole="mor_item" ToRole="acc_item_type" />
+    <NavigationProperty Name="mor_type" Relationship="Self.mor_item_type" FromRole="mor_item" ToRole="mor_type" />
+  </EntityType>
+  <EntityType Name="mor_type">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type_name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="acc_item_type" Relationship="Self.FK_acc_item_type_ToTable_2" FromRole="mor_type" ToRole="acc_item_type" />
+    <NavigationProperty Name="mor_item" Relationship="Self.mor_item_type" FromRole="mor_type" ToRole="mor_item" />
+  </EntityType>
+  <EntityType Name="reference">
+    <Key>
+      <PropertyRef Name="ref_id" />
+    </Key>
+    <Property Name="ref_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ref_no" Type="Int32" Nullable="false" />
+    <Property Name="ref_place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="accounts" Relationship="Self.acc_ref" FromRole="reference" ToRole="account" />
+  </EntityType>
+  <EntityType Name="reg_user">
+    <Key>
+      <PropertyRef Name="reg_id" />
+    </Key>
+    <Property Name="reg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="reg_pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="reg_cpass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mobile_no" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="reg_date" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="isvalid" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="transection">
+    <Key>
+      <PropertyRef Name="t_id" />
+    </Key>
+    <Property Name="t_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="t_no" Type="Decimal" Precision="7" Scale="0" Nullable="false" />
+    <Property Name="t_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="t_date" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="cashes" Relationship="Self.FK_cash_ToTable" FromRole="transection" ToRole="cash" />
+    <NavigationProperty Name="cheques" Relationship="Self.FK_cheque_ToTable" FromRole="transection" ToRole="cheque" />
+    <NavigationProperty Name="accounts" Relationship="Self.acc_trans" FromRole="transection" ToRole="account" />
+  </EntityType>
+  <EntityType Name="acc_item_type">
+    <Key>
+      <PropertyRef Name="acc_id" />
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="acc_id" Type="Int32" Nullable="false" />
+    <Property Name="item_id" Type="Int32" Nullable="false" />
+    <Property Name="type_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="account" Relationship="Self.FK_acc_item_type_ToTable" FromRole="acc_item_type" ToRole="account" />
+    <NavigationProperty Name="mor_item" Relationship="Self.FK_acc_item_type_ToTable_1" FromRole="acc_item_type" ToRole="mor_item" />
+    <NavigationProperty Name="mor_type" Relationship="Self.FK_acc_item_type_ToTable_2" FromRole="acc_item_type" ToRole="mor_type" />
+  </EntityType>
+  <EntityType Name="cash">
+    <Key>
+      <PropertyRef Name="t_id" />
+      <PropertyRef Name="cash_amt" />
+      <PropertyRef Name="pay_from" />
+    </Key>
+    <Property Name="t_id" Type="Int32" Nullable="false" />
+    <Property Name="cash_amt" Type="Int32" Nullable="false" />
+    <Property Name="pay_from" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="transection" Relationship="Self.FK_cash_ToTable" FromRole="cash" ToRole="transection" />
+  </EntityType>
+  <EntityType Name="cheque">
+    <Key>
+      <PropertyRef Name="t_id" />
+      <PropertyRef Name="cheque_no" />
+      <PropertyRef Name="cheque_amt" />
+      <PropertyRef Name="pay_from" />
+    </Key>
+    <Property Name="t_id" Type="Int32" Nullable="false" />
+    <Property Name="cheque_no" Type="Int32" Nullable="false" />
+    <Property Name="cheque_amt" Type="Int32" Nullable="false" />
+    <Property Name="pay_from" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="transection" Relationship="Self.FK_cheque_ToTable" FromRole="cheque" ToRole="transection" />
+  </EntityType>
+  <Association Name="FK_acc_item_type_ToTable">
+    <End Role="account" Type="Self.account" Multiplicity="1" />
+    <End Role="acc_item_type" Type="Self.acc_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="acc_id" />
+      </Principal>
+      <Dependent Role="acc_item_type">
+        <PropertyRef Name="acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_item_type_ToTable_1">
+    <End Role="mor_item" Type="Self.mor_item" Multiplicity="1" />
+    <End Role="acc_item_type" Type="Self.acc_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mor_item">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="acc_item_type">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_item_type_ToTable_2">
+    <End Role="mor_type" Type="Self.mor_type" Multiplicity="1" />
+    <End Role="acc_item_type" Type="Self.acc_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mor_type">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="acc_item_type">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cash_ToTable">
+    <End Role="transection" Type="Self.transection" Multiplicity="1" />
+    <End Role="cash" Type="Self.cash" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transection">
+        <PropertyRef Name="t_id" />
+      </Principal>
+      <Dependent Role="cash">
+        <PropertyRef Name="t_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cheque_ToTable">
+    <End Role="transection" Type="Self.transection" Multiplicity="1" />
+    <End Role="cheque" Type="Self.cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transection">
+        <PropertyRef Name="t_id" />
+      </Principal>
+      <Dependent Role="cheque">
+        <PropertyRef Name="t_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="acc_cust">
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+  </Association>
+  <Association Name="acc_ref">
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <End Role="reference" Type="Self.reference" Multiplicity="*" />
+  </Association>
+  <Association Name="acc_trans">
+    <End Role="account" Type="Self.account" Multiplicity="*" />
+    <End Role="transection" Type="Self.transection" Multiplicity="*" />
+  </Association>
+  <Association Name="mor_item_type">
+    <End Role="mor_item" Type="Self.mor_item" Multiplicity="*" />
+    <End Role="mor_type" Type="Self.mor_type" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="mlms_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accounts" EntityType="Self.account" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="log_user" EntityType="Self.log_user" />
+    <EntitySet Name="mor_item" EntityType="Self.mor_item" />
+    <EntitySet Name="mor_type" EntityType="Self.mor_type" />
+    <EntitySet Name="references" EntityType="Self.reference" />
+    <EntitySet Name="reg_user" EntityType="Self.reg_user" />
+    <EntitySet Name="transections" EntityType="Self.transection" />
+    <EntitySet Name="acc_item_type" EntityType="Self.acc_item_type" />
+    <EntitySet Name="cashes" EntityType="Self.cash" />
+    <EntitySet Name="cheques" EntityType="Self.cheque" />
+    <AssociationSet Name="FK_acc_item_type_ToTable" Association="Self.FK_acc_item_type_ToTable">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="acc_item_type" EntitySet="acc_item_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_item_type_ToTable_1" Association="Self.FK_acc_item_type_ToTable_1">
+      <End Role="mor_item" EntitySet="mor_item" />
+      <End Role="acc_item_type" EntitySet="acc_item_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_item_type_ToTable_2" Association="Self.FK_acc_item_type_ToTable_2">
+      <End Role="mor_type" EntitySet="mor_type" />
+      <End Role="acc_item_type" EntitySet="acc_item_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cash_ToTable" Association="Self.FK_cash_ToTable">
+      <End Role="transection" EntitySet="transections" />
+      <End Role="cash" EntitySet="cashes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cheque_ToTable" Association="Self.FK_cheque_ToTable">
+      <End Role="transection" EntitySet="transections" />
+      <End Role="cheque" EntitySet="cheques" />
+    </AssociationSet>
+    <AssociationSet Name="acc_cust" Association="Self.acc_cust">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="acc_ref" Association="Self.acc_ref">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="reference" EntitySet="references" />
+    </AssociationSet>
+    <AssociationSet Name="acc_trans" Association="Self.acc_trans">
+      <End Role="account" EntitySet="accounts" />
+      <End Role="transection" EntitySet="transections" />
+    </AssociationSet>
+    <AssociationSet Name="mor_item_type" Association="Self.mor_item_type">
+      <End Role="mor_item" EntitySet="mor_item" />
+      <End Role="mor_type" EntitySet="mor_type" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

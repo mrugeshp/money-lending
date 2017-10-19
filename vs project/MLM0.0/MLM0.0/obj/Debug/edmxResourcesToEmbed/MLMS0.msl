@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mlms_DBModelStoreContainer" CdmEntityContainer="mlms_DBEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="mlms_DBModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+          <ScalarProperty Name="acc_no" ColumnName="acc_no" />
+          <ScalarProperty Name="acc_bal" ColumnName="acc_bal" />
+          <ScalarProperty Name="acc_date" ColumnName="acc_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="mlms_DBModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="c_id" ColumnName="c_id" />
+          <ScalarProperty Name="c_fname" ColumnName="c_fname" />
+          <ScalarProperty Name="c_mname" ColumnName="c_mname" />
+          <ScalarProperty Name="c_lname" ColumnName="c_lname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="pin_no" ColumnName="pin_no" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="log_user">
+      <EntityTypeMapping TypeName="mlms_DBModel.log_user">
+        <MappingFragment StoreEntitySet="log_user">
+          <ScalarProperty Name="log_id" ColumnName="log_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mor_item">
+      <EntityTypeMapping TypeName="mlms_DBModel.mor_item">
+        <MappingFragment StoreEntitySet="mor_item">
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mor_type">
+      <EntityTypeMapping TypeName="mlms_DBModel.mor_type">
+        <MappingFragment StoreEntitySet="mor_type">
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="type_name" ColumnName="type_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="references">
+      <EntityTypeMapping TypeName="mlms_DBModel.reference">
+        <MappingFragment StoreEntitySet="reference">
+          <ScalarProperty Name="ref_id" ColumnName="ref_id" />
+          <ScalarProperty Name="ref_no" ColumnName="ref_no" />
+          <ScalarProperty Name="ref_place" ColumnName="ref_place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reg_user">
+      <EntityTypeMapping TypeName="mlms_DBModel.reg_user">
+        <MappingFragment StoreEntitySet="reg_user">
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="reg_pass" ColumnName="reg_pass" />
+          <ScalarProperty Name="reg_cpass" ColumnName="reg_cpass" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+          <ScalarProperty Name="isvalid" ColumnName="isvalid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transections">
+      <EntityTypeMapping TypeName="mlms_DBModel.transection">
+        <MappingFragment StoreEntitySet="transection">
+          <ScalarProperty Name="t_id" ColumnName="t_id" />
+          <ScalarProperty Name="t_no" ColumnName="t_no" />
+          <ScalarProperty Name="t_type" ColumnName="t_type" />
+          <ScalarProperty Name="t_date" ColumnName="t_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="acc_item_type">
+      <EntityTypeMapping TypeName="mlms_DBModel.acc_item_type">
+        <MappingFragment StoreEntitySet="acc_item_type">
+          <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+          <ScalarProperty Name="item_id" ColumnName="item_id" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cashes">
+      <EntityTypeMapping TypeName="mlms_DBModel.cash">
+        <MappingFragment StoreEntitySet="cash">
+          <ScalarProperty Name="t_id" ColumnName="t_id" />
+          <ScalarProperty Name="cash_amt" ColumnName="cash_amt" />
+          <ScalarProperty Name="pay_from" ColumnName="pay_from" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cheques">
+      <EntityTypeMapping TypeName="mlms_DBModel.cheque">
+        <MappingFragment StoreEntitySet="cheque">
+          <ScalarProperty Name="t_id" ColumnName="t_id" />
+          <ScalarProperty Name="cheque_no" ColumnName="cheque_no" />
+          <ScalarProperty Name="cheque_amt" ColumnName="cheque_amt" />
+          <ScalarProperty Name="pay_from" ColumnName="pay_from" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="acc_cust" TypeName="mlms_DBModel.acc_cust" StoreEntitySet="acc_cust">
+      <EndProperty Name="account">
+        <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+      </EndProperty>
+      <EndProperty Name="customer">
+        <ScalarProperty Name="c_id" ColumnName="c_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="acc_ref" TypeName="mlms_DBModel.acc_ref" StoreEntitySet="acc_ref">
+      <EndProperty Name="account">
+        <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+      </EndProperty>
+      <EndProperty Name="reference">
+        <ScalarProperty Name="ref_id" ColumnName="ref_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="acc_trans" TypeName="mlms_DBModel.acc_trans" StoreEntitySet="acc_trans">
+      <EndProperty Name="account">
+        <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+      </EndProperty>
+      <EndProperty Name="transection">
+        <ScalarProperty Name="t_id" ColumnName="t_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="mor_item_type" TypeName="mlms_DBModel.mor_item_type" StoreEntitySet="mor_item_type">
+      <EndProperty Name="mor_item">
+        <ScalarProperty Name="item_id" ColumnName="item_id" />
+      </EndProperty>
+      <EndProperty Name="mor_type">
+        <ScalarProperty Name="type_id" ColumnName="type_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

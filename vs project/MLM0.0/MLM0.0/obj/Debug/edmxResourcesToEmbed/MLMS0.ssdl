@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mlms_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'J:\PROJECT_WORK\MLM0.0\MLM0.0\APP_DATA\MLMS_DB.MDF.dbo.acc_cust' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="acc_cust">
+    <Key>
+      <PropertyRef Name="acc_id" />
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="acc_id" Type="int" Nullable="false" />
+    <Property Name="c_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'J:\PROJECT_WORK\MLM0.0\MLM0.0\APP_DATA\MLMS_DB.MDF.dbo.acc_item_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="acc_item_type">
+    <Key>
+      <PropertyRef Name="acc_id" />
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="acc_id" Type="int" Nullable="false" />
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'J:\PROJECT_WORK\MLM0.0\MLM0.0\APP_DATA\MLMS_DB.MDF.dbo.acc_ref' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="acc_ref">
+    <Key>
+      <PropertyRef Name="acc_id" />
+      <PropertyRef Name="ref_id" />
+    </Key>
+    <Property Name="acc_id" Type="int" Nullable="false" />
+    <Property Name="ref_id" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'J:\PROJECT_WORK\MLM0.0\MLM0.0\APP_DATA\MLMS_DB.MDF.dbo.acc_trans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="acc_trans">
+    <Key>
+      <PropertyRef Name="acc_id" />
+      <PropertyRef Name="t_id" />
+    </Key>
+    <Property Name="acc_id" Type="int" Nullable="false" />
+    <Property Name="t_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="acc_id" />
+    </Key>
+    <Property Name="acc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="acc_no" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="acc_bal" Type="int" Nullable="false" />
+    <Property Name="acc_date" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'J:\PROJECT_WORK\MLM0.0\MLM0.0\APP_DATA\MLMS_DB.MDF.dbo.cash' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="cash">
+    <Key>
+      <PropertyRef Name="t_id" />
+      <PropertyRef Name="cash_amt" />
+      <PropertyRef Name="pay_from" />
+    </Key>
+    <Property Name="t_id" Type="int" Nullable="false" />
+    <Property Name="cash_amt" Type="int" Nullable="false" />
+    <Property Name="pay_from" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'J:\PROJECT_WORK\MLM0.0\MLM0.0\APP_DATA\MLMS_DB.MDF.dbo.cheque' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="cheque">
+    <Key>
+      <PropertyRef Name="t_id" />
+      <PropertyRef Name="cheque_no" />
+      <PropertyRef Name="cheque_amt" />
+      <PropertyRef Name="pay_from" />
+    </Key>
+    <Property Name="t_id" Type="int" Nullable="false" />
+    <Property Name="cheque_no" Type="int" Nullable="false" />
+    <Property Name="cheque_amt" Type="int" Nullable="false" />
+    <Property Name="pay_from" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="c_fname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="c_mname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="c_lname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="age" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+    <Property Name="mobile_no" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="pin_no" Type="numeric" Precision="6" Scale="0" />
+    <Property Name="email_id" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="log_user">
+    <Key>
+      <PropertyRef Name="log_id" />
+    </Key>
+    <Property Name="log_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mor_item">
+    <Key>
+      <PropertyRef Name="item_id" />
+    </Key>
+    <Property Name="item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'J:\PROJECT_WORK\MLM0.0\MLM0.0\APP_DATA\MLMS_DB.MDF.dbo.mor_item_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="mor_item_type">
+    <Key>
+      <PropertyRef Name="item_id" />
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="item_id" Type="int" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mor_type">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_name" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reference">
+    <Key>
+      <PropertyRef Name="ref_id" />
+    </Key>
+    <Property Name="ref_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ref_no" Type="int" Nullable="false" />
+    <Property Name="ref_place" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reg_user">
+    <Key>
+      <PropertyRef Name="reg_id" />
+    </Key>
+    <Property Name="reg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email_id" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="reg_pass" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="reg_cpass" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="mobile_no" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="reg_date" Type="timestamp" StoreGeneratedPattern="Computed" />
+    <Property Name="isvalid" Type="bit" />
+  </EntityType>
+  <EntityType Name="transection">
+    <Key>
+      <PropertyRef Name="t_id" />
+    </Key>
+    <Property Name="t_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="t_no" Type="numeric" Precision="7" Scale="0" Nullable="false" />
+    <Property Name="t_type" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="t_date" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_acc_cust_ToTable">
+    <End Role="account" Type="Self.account" Multiplicity="1" />
+    <End Role="acc_cust" Type="Self.acc_cust" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="acc_id" />
+      </Principal>
+      <Dependent Role="acc_cust">
+        <PropertyRef Name="acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_cust_ToTable_1">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="acc_cust" Type="Self.acc_cust" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="c_id" />
+      </Principal>
+      <Dependent Role="acc_cust">
+        <PropertyRef Name="c_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_item_type_ToTable">
+    <End Role="account" Type="Self.account" Multiplicity="1" />
+    <End Role="acc_item_type" Type="Self.acc_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="acc_id" />
+      </Principal>
+      <Dependent Role="acc_item_type">
+        <PropertyRef Name="acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_item_type_ToTable_1">
+    <End Role="mor_item" Type="Self.mor_item" Multiplicity="1" />
+    <End Role="acc_item_type" Type="Self.acc_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mor_item">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="acc_item_type">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_item_type_ToTable_2">
+    <End Role="mor_type" Type="Self.mor_type" Multiplicity="1" />
+    <End Role="acc_item_type" Type="Self.acc_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mor_type">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="acc_item_type">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_ref_ToTable">
+    <End Role="account" Type="Self.account" Multiplicity="1" />
+    <End Role="acc_ref" Type="Self.acc_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="acc_id" />
+      </Principal>
+      <Dependent Role="acc_ref">
+        <PropertyRef Name="acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_ref_ToTable_1">
+    <End Role="reference" Type="Self.reference" Multiplicity="1" />
+    <End Role="acc_ref" Type="Self.acc_ref" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reference">
+        <PropertyRef Name="ref_id" />
+      </Principal>
+      <Dependent Role="acc_ref">
+        <PropertyRef Name="ref_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_tra_ToTable">
+    <End Role="account" Type="Self.account" Multiplicity="1" />
+    <End Role="acc_trans" Type="Self.acc_trans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="acc_id" />
+      </Principal>
+      <Dependent Role="acc_trans">
+        <PropertyRef Name="acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_acc_tra_ToTable_1">
+    <End Role="transection" Type="Self.transection" Multiplicity="1" />
+    <End Role="acc_trans" Type="Self.acc_trans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transection">
+        <PropertyRef Name="t_id" />
+      </Principal>
+      <Dependent Role="acc_trans">
+        <PropertyRef Name="t_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cash_ToTable">
+    <End Role="transection" Type="Self.transection" Multiplicity="1" />
+    <End Role="cash" Type="Self.cash" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transection">
+        <PropertyRef Name="t_id" />
+      </Principal>
+      <Dependent Role="cash">
+        <PropertyRef Name="t_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cheque_ToTable">
+    <End Role="transection" Type="Self.transection" Multiplicity="1" />
+    <End Role="cheque" Type="Self.cheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transection">
+        <PropertyRef Name="t_id" />
+      </Principal>
+      <Dependent Role="cheque">
+        <PropertyRef Name="t_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mor_item_type_ToTable">
+    <End Role="mor_item" Type="Self.mor_item" Multiplicity="1" />
+    <End Role="mor_item_type" Type="Self.mor_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mor_item">
+        <PropertyRef Name="item_id" />
+      </Principal>
+      <Dependent Role="mor_item_type">
+        <PropertyRef Name="item_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mor_item_type_ToTable_1">
+    <End Role="mor_type" Type="Self.mor_type" Multiplicity="1" />
+    <End Role="mor_item_type" Type="Self.mor_item_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mor_type">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="mor_item_type">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="mlms_DBModelStoreContainer">
+    <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="log_user" EntityType="Self.log_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mor_item" EntityType="Self.mor_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mor_type" EntityType="Self.mor_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reference" EntityType="Self.reference" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_user" EntityType="Self.reg_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transection" EntityType="Self.transection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="acc_cust" EntityType="Self.acc_cust" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [acc_cust].[acc_id] AS [acc_id], 
+    [acc_cust].[c_id] AS [c_id]
+    FROM [dbo].[acc_cust] AS [acc_cust]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="acc_item_type" EntityType="Self.acc_item_type" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [acc_item_type].[acc_id] AS [acc_id], 
+    [acc_item_type].[item_id] AS [item_id], 
+    [acc_item_type].[type_id] AS [type_id]
+    FROM [dbo].[acc_item_type] AS [acc_item_type]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="acc_ref" EntityType="Self.acc_ref" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [acc_ref].[acc_id] AS [acc_id], 
+    [acc_ref].[ref_id] AS [ref_id]
+    FROM [dbo].[acc_ref] AS [acc_ref]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="acc_trans" EntityType="Self.acc_trans" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [acc_trans].[acc_id] AS [acc_id], 
+    [acc_trans].[t_id] AS [t_id]
+    FROM [dbo].[acc_trans] AS [acc_trans]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="cash" EntityType="Self.cash" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [cash].[t_id] AS [t_id], 
+    [cash].[cash_amt] AS [cash_amt], 
+    [cash].[pay_from] AS [pay_from]
+    FROM [dbo].[cash] AS [cash]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="cheque" EntityType="Self.cheque" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [cheque].[t_id] AS [t_id], 
+    [cheque].[cheque_no] AS [cheque_no], 
+    [cheque].[cheque_amt] AS [cheque_amt], 
+    [cheque].[pay_from] AS [pay_from]
+    FROM [dbo].[cheque] AS [cheque]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="mor_item_type" EntityType="Self.mor_item_type" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [mor_item_type].[item_id] AS [item_id], 
+    [mor_item_type].[type_id] AS [type_id]
+    FROM [dbo].[mor_item_type] AS [mor_item_type]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_acc_cust_ToTable" Association="Self.FK_acc_cust_ToTable">
+      <End Role="account" EntitySet="account" />
+      <End Role="acc_cust" EntitySet="acc_cust" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_cust_ToTable_1" Association="Self.FK_acc_cust_ToTable_1">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="acc_cust" EntitySet="acc_cust" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_item_type_ToTable" Association="Self.FK_acc_item_type_ToTable">
+      <End Role="account" EntitySet="account" />
+      <End Role="acc_item_type" EntitySet="acc_item_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_item_type_ToTable_1" Association="Self.FK_acc_item_type_ToTable_1">
+      <End Role="mor_item" EntitySet="mor_item" />
+      <End Role="acc_item_type" EntitySet="acc_item_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_item_type_ToTable_2" Association="Self.FK_acc_item_type_ToTable_2">
+      <End Role="mor_type" EntitySet="mor_type" />
+      <End Role="acc_item_type" EntitySet="acc_item_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_ref_ToTable" Association="Self.FK_acc_ref_ToTable">
+      <End Role="account" EntitySet="account" />
+      <End Role="acc_ref" EntitySet="acc_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_ref_ToTable_1" Association="Self.FK_acc_ref_ToTable_1">
+      <End Role="reference" EntitySet="reference" />
+      <End Role="acc_ref" EntitySet="acc_ref" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_tra_ToTable" Association="Self.FK_acc_tra_ToTable">
+      <End Role="account" EntitySet="account" />
+      <End Role="acc_trans" EntitySet="acc_trans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_acc_tra_ToTable_1" Association="Self.FK_acc_tra_ToTable_1">
+      <End Role="transection" EntitySet="transection" />
+      <End Role="acc_trans" EntitySet="acc_trans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cash_ToTable" Association="Self.FK_cash_ToTable">
+      <End Role="transection" EntitySet="transection" />
+      <End Role="cash" EntitySet="cash" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cheque_ToTable" Association="Self.FK_cheque_ToTable">
+      <End Role="transection" EntitySet="transection" />
+      <End Role="cheque" EntitySet="cheque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mor_item_type_ToTable" Association="Self.FK_mor_item_type_ToTable">
+      <End Role="mor_item" EntitySet="mor_item" />
+      <End Role="mor_item_type" EntitySet="mor_item_type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mor_item_type_ToTable_1" Association="Self.FK_mor_item_type_ToTable_1">
+      <End Role="mor_type" EntitySet="mor_type" />
+      <End Role="mor_item_type" EntitySet="mor_item_type" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

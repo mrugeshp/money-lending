@@ -1,0 +1,209 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/Site1.Master"  CodeBehind="verify_user.aspx.cs" Inherits="authwebpart.verify_user" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="verify_userID" runat="server">
+
+
+        <table class="auto-style1">
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:authuserConnectionString %>" DeleteCommand="DELETE FROM [reg_user] WHERE [reg_id] = @reg_id" InsertCommand="INSERT INTO [reg_user] ([reg_uname], [email_id], [mobile_no], [reg_date]) VALUES (@reg_uname, @email_id, @mobile_no, @reg_date)" ProviderName="<%$ ConnectionStrings:authuserConnectionString.ProviderName %>" SelectCommand="SELECT reg_id, reg_uname, email_id, mobile_no, reg_date, isvalid FROM reg_user WHERE (isvalid = @isvalid) ORDER BY reg_date" UpdateCommand="UPDATE [reg_user] SET [reg_uname] = @reg_uname, [email_id] = @email_id, [mobile_no] = @mobile_no, [reg_date] = @reg_date WHERE [reg_id] = @reg_id">
+                        <DeleteParameters>
+                            <asp:Parameter Name="reg_id" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="reg_uname" Type="String" />
+                            <asp:Parameter Name="email_id" Type="String" />
+                            <asp:Parameter Name="mobile_no" Type="Decimal" />
+                            <asp:Parameter Name="reg_date" Type="DateTime" />
+                        </InsertParameters>
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="False" Name="isvalid" Type="Boolean" />
+                        </SelectParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="reg_uname" Type="String" />
+                            <asp:Parameter Name="email_id" Type="String" />
+                            <asp:Parameter Name="mobile_no" Type="Decimal" />
+                            <asp:Parameter Name="reg_date" Type="DateTime" />
+                            <asp:Parameter Name="reg_id" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
+                </td>
+                <td class="auto-style2"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    <asp:GridView ID="GridView1" runat="server" EmptyDataText="No User Request Is Pending" ShowHeader="true" AutoGenerateColumns="False" DataKeyNames="reg_id" DataSourceID="SqlDataSource1" ShowHeaderWhenEmpty="True">
+                        <Columns>
+                            <asp:CommandField ShowDeleteButton="True" ShowSelectButton="True" />
+                            <asp:BoundField DataField="reg_id" HeaderText="reg_id" InsertVisible="False" ReadOnly="True" SortExpression="reg_id" />
+                            <asp:BoundField DataField="reg_uname" HeaderText="reg_uname" SortExpression="reg_uname" />
+                            <asp:BoundField DataField="email_id" HeaderText="email_id" SortExpression="email_id" />
+                            <asp:BoundField DataField="mobile_no" HeaderText="mobile_no" SortExpression="mobile_no" />
+                            <asp:BoundField DataField="reg_date" HeaderText="reg_date" SortExpression="reg_date" />
+                            <asp:CheckBoxField DataField="isvalid" HeaderText="isvalid" SortExpression="isvalid" />
+                        </Columns>
+                    </asp:GridView>
+                </td>
+                <td class="auto-style2"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:FormView ID="FormView1" runat="server" DataKeyNames="reg_id" DataSourceID="SqlDataSource2">
+                        <EditItemTemplate>
+                            reg_id:
+                            <asp:Label ID="reg_idLabel1" runat="server" Text='<%# Eval("reg_id") %>' />
+                            <br />
+                            mobile_no:
+                            <asp:TextBox ID="mobile_noTextBox" runat="server" Text='<%# Bind("mobile_no") %>' />
+                            <br />
+                            email_id:
+                            <asp:TextBox ID="email_idTextBox" runat="server" Text='<%# Bind("email_id") %>' />
+                            <br />
+                            isvalid:
+                            <asp:CheckBox ID="isvalidCheckBox" runat="server" Checked='<%# Bind("isvalid") %>' />
+                            <br />
+                            reg_uname:
+                            <asp:TextBox ID="reg_unameTextBox" runat="server" Text='<%# Bind("reg_uname") %>' />
+                            <br />
+                            reg_date:
+                            <asp:TextBox ID="reg_dateTextBox" runat="server" Text='<%# Bind("reg_date") %>' />
+                            <br />
+                            role_id:
+                            <asp:TextBox ID="role_idTextBox" runat="server" Text='<%# Bind("role_id") %>' />
+                            <br />
+                            <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
+                            &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            mobile_no:
+                            <asp:TextBox ID="mobile_noTextBox" runat="server" Text='<%# Bind("mobile_no") %>' />
+                            <br />
+                            email_id:
+                            <asp:TextBox ID="email_idTextBox" runat="server" Text='<%# Bind("email_id") %>' />
+                            <br />
+                            isvalid:
+                            <asp:CheckBox ID="isvalidCheckBox" runat="server" Checked='<%# Bind("isvalid") %>' />
+                            <br />
+                            reg_uname:
+                            <asp:TextBox ID="reg_unameTextBox" runat="server" Text='<%# Bind("reg_uname") %>' />
+                            <br />
+                            reg_date:
+                            <asp:TextBox ID="reg_dateTextBox" runat="server" Text='<%# Bind("reg_date") %>' />
+                            <br />
+                            role_id:
+                            <asp:TextBox ID="role_idTextBox" runat="server" Text='<%# Bind("role_id") %>' />
+                            <br />
+                            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            reg_id:
+                            <asp:Label ID="reg_idLabel" runat="server" Text='<%# Eval("reg_id") %>' />
+                            <br />
+                            mobile_no:
+                            <asp:Label ID="mobile_noLabel" runat="server" Text='<%# Bind("mobile_no") %>' />
+                            <br />
+                            email_id:
+                            <asp:Label ID="email_idLabel" runat="server" Text='<%# Bind("email_id") %>' />
+                            <br />
+                            isvalid:
+                            <asp:CheckBox ID="isvalidCheckBox" runat="server" Checked='<%# Bind("isvalid") %>' Enabled="false" />
+                            <br />
+                            reg_uname:
+                            <asp:Label ID="reg_unameLabel" runat="server" Text='<%# Bind("reg_uname") %>' />
+                            <br />
+                            reg_date:
+                            <asp:Label ID="reg_dateLabel" runat="server" Text='<%# Bind("reg_date") %>' />
+                            <br />
+                            role_id:
+                            <asp:Label ID="role_idLabel" runat="server" Text='<%# Bind("role_id") %>' />
+                            <br />
+                            <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
+                            &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                            &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
+                        </ItemTemplate>
+                    </asp:FormView>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:authuserConnectionString %>" DeleteCommand="DELETE FROM [reg_user] WHERE [reg_id] = @reg_id" InsertCommand="INSERT INTO [reg_user] ([reg_uname], [email_id], [mobile_no], [reg_date], [role_id], [isvalid]) VALUES (@reg_uname, @email_id, @mobile_no, @reg_date, @role_id, @isvalid)" SelectCommand="SELECT [reg_id], [reg_uname], [email_id], [mobile_no], [reg_date], [role_id], [isvalid] FROM [reg_user] WHERE ([reg_id] = @reg_id) ORDER BY [reg_date] DESC" UpdateCommand="UPDATE [reg_user] SET [reg_uname] = @reg_uname, [email_id] = @email_id, [mobile_no] = @mobile_no, [reg_date] = @reg_date, [role_id] = @role_id, [isvalid] = @isvalid WHERE [reg_id] = @reg_id" ProviderName="System.Data.SqlClient">
+            <DeleteParameters>
+                <asp:Parameter Name="reg_id" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="reg_uname" Type="String" />
+                <asp:Parameter Name="email_id" Type="String" />
+                <asp:Parameter Name="mobile_no" Type="Decimal" />
+                <asp:Parameter Name="reg_date" Type="DateTime" />
+                <asp:Parameter Name="role_id" Type="Decimal" />
+                <asp:Parameter Name="isvalid" Type="Boolean" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="GridView1" Name="reg_id" PropertyName="SelectedValue" Type="Int32" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="reg_uname" Type="String" />
+                <asp:Parameter Name="email_id" Type="String" />
+                <asp:Parameter Name="mobile_no" Type="Decimal" />
+                <asp:Parameter Name="reg_date" Type="DateTime" />
+                <asp:Parameter Name="role_id" Type="Decimal" />
+                <asp:Parameter Name="isvalid" Type="Boolean" />
+                <asp:Parameter Name="reg_id" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <div>
+        </div>
+    </form>
+    <table class="auto-style1">
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/approved.aspx">Approved User</asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+              
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                &nbsp;</td>
+        </tr>
+    </table>
+
+    </asp:Content>

@@ -1,0 +1,4 @@
+﻿.credit-debit-table tr:last-child td:last-child,
+.credit-debit-table tr:last-child td:nth-child(4) {
+    display: none;
+}
